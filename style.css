@@ -1,110 +1,24 @@
-:root {
-    --primary-color: #ff6a40; /* A more vibrant primary color */
-    --secondary-color: #8c203b; /* A darker, complementary color */
-    --background-color: #f7f7f7;
-    --text-color: #333;
-    --light-text-color: #fff;
-    --highlight-text-color: #ff6a40;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    line-height: 1.6;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 5%;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.nav-link {
-    text-decoration: none;
-    color: var(--text-color);
-    margin-left: 20px;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.nav-link:hover {
-    color: var(--highlight-text-color);
-}
-
-.hero {
-    min-height: 80vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    text-align: center;
-    padding: 0 5%;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
 }
 
-.hero-title {
-    font-size: clamp(2rem, 8vw, 5rem);
-    font-weight: 700;
+.toolbar {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     margin-bottom: 20px;
-    color: var(--secondary-color);
+    display: flex;
+    gap: 15px;
+    align-items: center;
 }
 
-.animated-text {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s forwards;
-}
-
-.animated-text:nth-child(2) {
-    animation-delay: 0.5s;
-}
-
-.animated-text:nth-child(3) {
-    animation-delay: 1s;
-}
-
-.hero-subtitle {
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    max-width: 600px;
-    margin-bottom: 30px;
-}
-
-.cta-button {
-    background-color: var(--primary-color);
-    color: var(--light-text-color);
-    border: none;
-    padding: 15px 30px;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.cta-button:hover {
-    transform: scale(1.05);
-    background-color: #d1502e;
-}
-
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+#drawingCanvas {
+    background-color: #fff;
+    border: 2px solid #333;
+    cursor: crosshair;
 }
