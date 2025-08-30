@@ -1,24 +1,24 @@
 :root {
-    --primary-color: #007bff; /* A striking, modern blue */
-    --secondary-color: #3b3b4f; /* A dark, deep gray */
-    --accent-color: #ff5252; /* A bold red for highlights */
-    --background-color: #eef2f5; /* A light, clean background */
-    --surface-color: #ffffff; /* A pure white for components */
-    --text-color: #333333;
-    --border-color: #d1d1d1;
-    --shadow-color: rgba(0, 0, 0, 0.1);
+    --primary-color: #00bcd4; /* Cyan */
+    --secondary-color: #3f51b5; /* Indigo */
+    --accent-color: #ff4081; /* Pink */
+    --background-color: #212121; /* Dark Gray */
+    --surface-color: #303030; /* Slightly lighter gray */
+    --text-color: #e0e0e0;
+    --border-color: #424242;
+    --shadow-color: rgba(0, 0, 0, 0.4);
 }
 
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     min-height: 100vh;
     background-color: var(--background-color);
     font-family: 'Poppins', sans-serif;
     color: var(--text-color);
-    padding: 2rem;
+    padding-top: 2rem;
     overflow-x: hidden;
 }
 
@@ -27,70 +27,58 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 3rem;
     position: fixed;
     top: 0;
     z-index: 100;
-    background: var(--surface-color);
-    box-shadow: 0 4px 12px var(--shadow-color);
-    animation: fadeIn 0.8s ease-out forwards;
+    background-color: var(--surface-color);
+    box-shadow: 0 4px 10px var(--shadow-color);
+    border-bottom: 2px solid var(--primary-color);
+    animation: slideDown 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 .logo {
-    font-size: 1.75rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--primary-color);
+    text-shadow: 0 0 5px var(--primary-color);
     transition: transform 0.3s ease;
 }
 
 .logo:hover {
-    transform: scale(1.05);
+    transform: scale(1.05) rotate(-2deg);
 }
 
 .nav-link {
     text-decoration: none;
-    color: var(--secondary-color);
+    color: var(--text-color);
     margin-left: 25px;
     font-weight: 500;
-    position: relative;
-    transition: color 0.3s ease;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: var(--accent-color);
-    transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .nav-link:hover {
-    color: var(--primary-color);
-}
-
-.nav-link:hover::after {
-    width: 100%;
+    color: var(--accent-color);
+    transform: translateY(-2px);
 }
 
 .toolbar {
-    background: var(--surface-color);
+    background-color: var(--surface-color);
     padding: 1.5rem 2rem;
-    border-radius: 16px;
+    border-radius: 12px;
     box-shadow: 0 8px 20px var(--shadow-color);
     margin-top: 100px;
     margin-bottom: 2rem;
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
     align-items: center;
-    animation: slideInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    border: 1px solid var(--border-color);
+    animation: fadeIn 1s ease-out forwards;
 }
 
-.toolbar label {
+.toolbar label, .toolbar select {
     font-weight: 600;
-    color: var(--secondary-color);
+    color: var(--text-color);
 }
 
 .toolbar input[type="color"] {
@@ -98,8 +86,8 @@ body {
     -moz-appearance: none;
     appearance: none;
     border: none;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     background: none;
     cursor: pointer;
     border-radius: 50%;
@@ -112,8 +100,8 @@ body {
 
 .toolbar input[type="color"]::-webkit-color-swatch {
     border-radius: 50%;
-    border: 3px solid var(--border-color);
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 0 10px var(--accent-color);
 }
 
 .toolbar input[type="color"]:hover {
@@ -122,25 +110,25 @@ body {
 
 .toolbar select {
     padding: 10px 15px;
-    border-radius: 10px;
+    border-radius: 8px;
     border: 1px solid var(--border-color);
-    background-color: var(--surface-color);
+    background-color: var(--background-color);
     font-family: 'Poppins', sans-serif;
     color: var(--text-color);
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 5px var(--shadow-color);
+    box-shadow: inset 0 2px 4px var(--shadow-color);
 }
 
 .toolbar select:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+    box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.4);
 }
 
 #drawingCanvas {
     background-color: var(--surface-color);
-    border-radius: 20px;
+    border-radius: 12px;
     box-shadow: 0 15px 30px var(--shadow-color);
     cursor: crosshair;
     transition: transform 0.3s ease;
@@ -155,13 +143,7 @@ body {
     to { opacity: 1; }
 }
 
-@keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+@keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
 }
