@@ -3,21 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anim8Code - Drawing Canvas</title>
-    <link rel="stylesheet" href="canvas-style.css">
+    <title>Anim8Code - Website Designer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="toolbar">
-        <label for="colorPicker">Color:</label>
-        <input type="color" id="colorPicker" value="#000000">
-        
-        <label for="toolSelector">Tool:</label>
-        <select id="toolSelector">
-            <option value="draw">Draw</option>
-            <option value="erase">Erase</option>
-        </select>
+
+    <header class="header">
+        <div class="logo">Anim8Code</div>
+        <nav class="nav">
+            <a href="#" class="nav-link">Home</a>
+            <a href="#" class="nav-link">Features</a>
+            <a href="#" class="nav-link">About</a>
+        </nav>
+    </header>
+
+    <main class="app-container">
+        <aside class="sidebar">
+            <h3 class="sidebar-title">Tools</h3>
+            <button class="tool-button" id="addButton">Add Button</button>
+        </aside>
+
+        <section class="main-canvas">
+            <div id="designArea"></div>
+        </section>
+
+        <div class="toolbar">
+            <button class="code-button" id="viewCodeBtn">View Code</button>
+        </div>
+    </main>
+
+    <div id="codeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Your Code</h3>
+            <textarea id="codeDisplay" readonly></textarea>
+        </div>
     </div>
-    <canvas id="drawingCanvas"></canvas>
-    <script src="canvas-script.js"></script>
+    
+    <script src="app.js"></script>
 </body>
 </html>
