@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anim8Code - Website Designer</title>
+    <title>Anim8Code - Animation Designer</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -21,14 +21,17 @@
     <main class="app-container">
         <aside class="sidebar">
             <h3 class="sidebar-title">Tools</h3>
-            <button class="tool-button" id="addButton">Add Button</button>
+            <button class="tool-button" id="drawBtn">Draw Square</button>
+            <label for="colorPicker">Color:</label>
+            <input type="color" id="colorPicker" value="#007bff">
         </aside>
 
         <section class="main-canvas">
-            <div id="designArea"></div>
+            <canvas id="animationCanvas"></canvas>
         </section>
 
         <div class="toolbar">
+            <button class="code-button" id="animateBtn">Animate!</button>
             <button class="code-button" id="viewCodeBtn">View Code</button>
         </div>
     </main>
