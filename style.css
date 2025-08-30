@@ -1,11 +1,12 @@
 :root {
-    --primary-color: #5d5dff; /* A clean, deep blue */
-    --secondary-color: #3d3dff; /* A slightly darker shade */
-    --accent-color: #ff5e5e; /* A vibrant, eye-catching red */
-    --background-color: #f0f4f8; /* A very light, soft gray-blue */
-    --surface-color: #ffffff; /* Pure white for clean surfaces */
-    --text-color: #333333; /* Dark gray for readability */
-    --border-color: #e0e0e0;
+    --primary-color: #007bff; /* A striking, modern blue */
+    --secondary-color: #3b3b4f; /* A dark, deep gray */
+    --accent-color: #ff5252; /* A bold red for highlights */
+    --background-color: #eef2f5; /* A light, clean background */
+    --surface-color: #ffffff; /* A pure white for components */
+    --text-color: #333333;
+    --border-color: #d1d1d1;
+    --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
 body {
@@ -30,18 +31,15 @@ body {
     position: fixed;
     top: 0;
     z-index: 100;
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    background: var(--surface-color);
+    box-shadow: 0 4px 12px var(--shadow-color);
+    animation: fadeIn 0.8s ease-out forwards;
 }
 
 .logo {
     font-size: 1.75rem;
     font-weight: 700;
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--primary-color);
     transition: transform 0.3s ease;
 }
 
@@ -51,7 +49,7 @@ body {
 
 .nav-link {
     text-decoration: none;
-    color: var(--text-color);
+    color: var(--secondary-color);
     margin-left: 25px;
     font-weight: 500;
     position: relative;
@@ -66,7 +64,11 @@ body {
     bottom: -5px;
     left: 0;
     background-color: var(--accent-color);
-    transition: width 0.3s ease-in-out;
+    transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
 }
 
 .nav-link:hover::after {
@@ -74,22 +76,21 @@ body {
 }
 
 .toolbar {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(15px);
-    padding: 1.5rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: var(--surface-color);
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px var(--shadow-color);
     margin-top: 100px;
     margin-bottom: 2rem;
     display: flex;
     gap: 1.5rem;
     align-items: center;
+    animation: slideInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 .toolbar label {
     font-weight: 600;
-    color: var(--text-color);
+    color: var(--secondary-color);
 }
 
 .toolbar input[type="color"] {
@@ -102,8 +103,7 @@ body {
     background: none;
     cursor: pointer;
     border-radius: 50%;
-    transition: all 0.3s ease;
-    animation: pulse 2s infinite ease-in-out;
+    transition: transform 0.3s ease;
 }
 
 .toolbar input[type="color"]::-webkit-color-swatch-wrapper {
@@ -113,12 +113,11 @@ body {
 .toolbar input[type="color"]::-webkit-color-swatch {
     border-radius: 50%;
     border: 3px solid var(--border-color);
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
 .toolbar input[type="color"]:hover {
     transform: scale(1.1);
-    animation-play-state: paused;
 }
 
 .toolbar select {
@@ -130,19 +129,19 @@ body {
     color: var(--text-color);
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 5px var(--shadow-color);
 }
 
 .toolbar select:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(93, 93, 255, 0.2);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
 }
 
 #drawingCanvas {
     background-color: var(--surface-color);
     border-radius: 20px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 15px 30px var(--shadow-color);
     cursor: crosshair;
     transition: transform 0.3s ease;
 }
@@ -151,33 +150,18 @@ body {
     transform: translateY(-5px);
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 var(--accent-color); }
-    50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 94, 94, 0); }
-    100% { transform: scale(1); box-shadow: 0 0 0 0 var(--accent-color); }
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-@media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem;
-        position: relative;
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
-    .nav {
-        margin-top: 1rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
-    }
-    .toolbar {
-        flex-direction: column;
-        width: 90%;
-        margin-top: 20px;
-        padding: 1rem;
-    }
-    #drawingCanvas {
-        width: 95%;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
